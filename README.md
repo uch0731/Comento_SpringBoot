@@ -10,7 +10,10 @@ SpringBoot 환경설정 & 테스트
 
    * Eclipse 2021-09 (4.21.0) 사용 
 
-   * MySql 8.0.21 사용 
+   * MySql 8.0.21 사용
+  
+   * myBatis 2.3.1
+
 
 2. 테스트
 
