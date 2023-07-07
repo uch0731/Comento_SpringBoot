@@ -33,5 +33,86 @@ public class StatisticServiceImpl implements StatisticService {
         
         return retVal;
     }
+    
+    @Override
+    public HashMap<String, Object> monthLoginNum (String month) {
+ 
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+        System.out.println(uMapper.selectMonthLogin(month));
+        
+        try {
+            retVal = uMapper.selectMonthLogin(month);
+            retVal.put("is_success", true);
+            
+        }catch(Exception e) {
+            retVal.put("is_success", false);
+        }
+        
+        return retVal;
+    }
+    
+    @Override
+    public HashMap<String, Object> dayLoginNum () {
+
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+
+        try {
+            retVal = uMapper.selectDayLogin();
+            retVal.put("is_success", true);
+            
+        }catch(Exception e) {
+            retVal.put("is_success", false);
+        }
+        
+        return retVal;
+    }
+    
+    @Override
+    public HashMap<String, Object> monthDayLoginNum (String monthDay) {
+
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+
+        try {
+            retVal = uMapper.selectMonthDayLogin(monthDay);
+            retVal.put("is_success", true);
+            
+        }catch(Exception e) {
+            retVal.put("is_success", false);
+        }
+        
+        return retVal;
+    }
+    
+    @Override
+    public HashMap<String, Object> avgLoginNum () {
+        
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+        try {
+            retVal = uMapper.selectAvgLogin();
+            retVal.put("is_success", true);
+            
+        }catch(Exception e) {
+            retVal.put("averageLogin", -999);
+            retVal.put("is_success", false);
+        }
+        
+        return retVal;
+    }
+    
+    @Override
+    public HashMap<String, Object> monthOrganLoginNum (String month, String organ) {
+
+        HashMap<String, Object> retVal = new HashMap<String,Object>();
+
+        try {
+            retVal = uMapper.selectMonthOrganLogin(month, organ);
+            retVal.put("is_success", true);
+            
+        }catch(Exception e) {
+            retVal.put("is_success", false);
+        }
+        
+        return retVal;
+    }
  
 }

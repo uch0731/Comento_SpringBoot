@@ -10,5 +10,37 @@
         from statistc.requestinfo ri
         where left(ri.createDate, 2) = #{year};
     </select>
+
+    <select id="selectMonthLogin" parameterType="string" resultType="hashMap">
+        SELECT COUNT(*) AS totCnt
+		FROM statistc.requestinfo
+		Where (SUBSTR(requestinfo.createDate, 3, 2)) = #{month};
+
+    </select>
+
+    <select id="selectDayLogin" parameterType="string" resultType="hashMap">
+        SELECT (SUBSTR(requestinfo.createDate, 5, 2)) AS Day,
+       	COUNT(requestinfo.createDate) AS Count
+		FROM statistc.requestinfo
+		GROUP BY Day;
+    </select>
+
+    <select id="selectMonthDayLogin" parameterType="string" resultType="hashMap">
+        SELECT COUNT(*) AS totCnt
+		FROM statistc.requestinfo
+		Where (SUBSTR(requestinfo.createDate, 3, 4)) = #{monthDay};
+    </select>
+
+    <select id="selectAvgLogin" parameterType="string" resultType="hashMap">
+        SELECT COUNT(requestinfo.createDate) / COUNT(DISTINCT SUBSTR(requestinfo.createDate, 3, 4)) AS averageLogin
+		FROM statistc.requestinfo;
+    </select>
+
+    <select id="selectMonthOrganLogin" parameterType="string" resultType="hashMap">
+        SELECT COUNT(*) AS totCnt
+		FROM requestinfo LEFT JOIN user ON requestinfo.userID = user.userID
+		where (SUBSTR(requestinfo.createDate, 3, 2)) = #{month} and hr_organ = #{organ};
+
+    </select>
     
 </mapper>

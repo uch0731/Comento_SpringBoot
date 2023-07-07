@@ -5,5 +5,10 @@ import java.util.HashMap;
  
 public interface  StatisticMapper {
     public HashMap<String, Object> selectYearLogin(String year);
+    public HashMap<String, Object> selectMonthLogin(String month);
+    public HashMap<String, Object> selectDayLogin();
+    public HashMap<String, Object> selectMonthDayLogin(String monthDay);
+    public HashMap<String, Object> selectAvgLogin();
+    public HashMap<String, Object> selectMonthOrganLogin(String month, String organ);
  
 }
