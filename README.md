@@ -25,45 +25,46 @@ SQL 활용해서 API 개발
 API 가이드 문서 작성
 
 1. SQL
-  * 월별 접속자 수
+   
+    * 월별 접속자 수
 
-    ex) 4월
+      ex) 4월
     
-     SELECT COUNT(*) AS totCnt
+       SELECT COUNT(*) AS totCnt
 
-      FROM statistc.requestinfo
+        FROM statistc.requestinfo
 
-      Where (SUBSTR(requestinfo.createDate, 3, 2)) = 04;
+        Where (SUBSTR(requestinfo.createDate, 3, 2)) = 04;
     
      
-  * 일자별 접속자 수
+    * 일자별 접속자 수
 
-    ex) 4월4일
+      ex) 4월4일
 
-    SELECT COUNT(*) AS totCnt
+      SELECT COUNT(*) AS totCnt
     
-    FROM statistc.requestinfo
+      FROM statistc.requestinfo
     
-    Where (SUBSTR(requestinfo.createDate, 3, 4)) = 0404;
+      Where (SUBSTR(requestinfo.createDate, 3, 4)) = 0404;
     
    
-  * 평균 하루 로그인 수
+    * 평균 하루 로그인 수
 
-    SELECT (COUNT(requestinfo.createDate)) AS average_count
+      SELECT (COUNT(requestinfo.createDate)) AS average_count
     
-    FROM statistc.requestinfo;
+      FROM statistc.requestinfo;
     
    
-  * 휴일을 제외한 로그인 수 ( 해당 문제에서는 휴일을 포함합니다.)
+    * 휴일을 제외한 로그인 수 ( 해당 문제에서는 휴일을 포함합니다.)
     
-         *** API 구축시에는 추가 구현 필요 : 쿼리 + @(별도의 db생성 or 공공API 활용) )**
+           *** API 구축시에는 추가 구현 필요 : 쿼리 + @(별도의 db생성 or 공공API 활용) )**
     
-  * 부서별 월별 로그인 수
+    * 부서별 월별 로그인 수
 
-    ex) 4월 부서 ppp
+      ex) 4월 부서 ppp
 
-    SELECT COUNT(*) AS totCnt
+      SELECT COUNT(*) AS totCnt
     
-    FROM requestinfo LEFT JOIN user ON requestinfo.userID = user.userID
+      FROM requestinfo LEFT JOIN user ON requestinfo.userID = user.userID
 
-    where (SUBSTR(requestinfo.createDate, 3, 2)) = '04' and hr_organ = 'ppp';
+      where (SUBSTR(requestinfo.createDate, 3, 2)) = '04' and hr_organ = 'ppp';
