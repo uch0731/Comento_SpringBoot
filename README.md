@@ -50,8 +50,8 @@ API 가이드 문서 작성
    
     * 평균 하루 로그인 수
 
-      SELECT (COUNT(requestinfo.createDate)) AS average_count
-    
+      SELECT COUNT(requestinfo.createDate) / COUNT(DISTINCT SUBSTR(requestinfo.createDate, 3, 4)) AS averageLogin
+      
       FROM statistc.requestinfo;
     
    
